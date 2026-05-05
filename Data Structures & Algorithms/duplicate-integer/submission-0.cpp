@@ -1,12 +1,18 @@
 class Solution {
 public:
     bool hasDuplicate(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
 
-        for (int i = 1; i < nums.size(); i++) {
-            if (nums[i] == nums[i -1]) {
+        std::unordered_set<int> seen;
+
+        // Iterate through vector
+        for (int num: nums) {
+            
+            // If element already in set
+            if (seen.count(num)) {
                 return true;
             }
+            // If element not in set
+            seen.insert(num);
         }
         return false;
     }
